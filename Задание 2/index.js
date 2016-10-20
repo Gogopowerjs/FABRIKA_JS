@@ -15,23 +15,12 @@ function isPowerOfTwo(n) {
 
 // Задание 2
 
-var increment = function increment(n) {
-    var obj = {
-        value: 0,
-        calls: 0
+var increment = (function makeCounter() {
+  var currentCount = 1;
+  return function(n){
+    return {
+      value: n+1,
+      calls: currentCount++,
     };
-
-    //счетчик
-    //не понимаю как записать значение счетчика в переменную 
-    function makeCounter() {
-        var currentCount = 1;
-        return function() {
-            return currentCount++;
-        };
-    }
-    var counter = makeCounter();
-    obj.calls = counter(n);
-    obj.value = n + 1;
-    // возвращаю обьект 
-    return obj;
-};
+  };
+})();
